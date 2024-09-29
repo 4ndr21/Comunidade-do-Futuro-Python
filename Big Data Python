@@ -1,0 +1,20 @@
+git clone https://github.com/seu-usuario/seu-repositorio.git
+cd seu-repositorio
+from pyspark.sql import SparkSession
+
+# Criar uma SparkSession
+spark = SparkSession.builder \
+    .appName("Exemplo Big Data com PySpark") \
+    .getOrCreate()
+
+# Ler um grande conjunto de dados (Exemplo: arquivo CSV)
+df = spark.read.csv("caminho/para/seu/dataset.csv", header=True, inferSchema=True)
+
+# Exibir algumas informações sobre o DataFrame
+df.printSchema()
+
+# Operações simples de agregação
+df.groupBy("coluna_exemplo").count().show()
+
+# Parar a sessão Spark
+spark.stop()
